@@ -5,11 +5,30 @@ body{
 }
 header {
     background: black;
+    padding:10px 20px;
 }
 section{
     background: white;
     color: grey;
+    padding:20px;
+    display:flex;
+    flex-direction: row;
+}
+div{
+    background: grey;
+    margin:auto;
+    width:120px;
+}
+ul{
+    margin:0;
+    padding: 0%;
+    list-style-type: none;
+}
+li{
+    display: inline-block;
+    margin-right: 20px;
 }
 footer{
     background: black;
+    padding:10px 20px;
 }
