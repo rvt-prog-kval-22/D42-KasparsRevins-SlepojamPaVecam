@@ -4,8 +4,17 @@ body{
     font-family: Helvetica Neue, Helvetica, Arial;
 }
 header {
-    background: black;
+    background: rgb(92, 92, 92);
     padding:10px 20px;
+}
+header .logo a{
+    background-image:url("images/logo1.png");
+    background-size: 300px;
+    background-repeat: no-repeat;
+    display:inline-block ;
+    width: 300px;
+    height: 130px;
+    text-indent: -99999px;  
 }
 section{
     background: white;
@@ -15,9 +24,10 @@ section{
     flex-direction: row;
 }
 div{
-    background: grey;
+    background: rgb(87, 223, 233);
     margin:auto;
     width:120px;
+    color:honeydew;
 }
 ul{
     margin:0;
@@ -28,7 +38,11 @@ li{
     display: inline-block;
     margin-right: 20px;
 }
+li:hover{
+    background-color:rgb(255, 255, 255);
+    padding: 0 10px 0 10px;
+}
 footer{
-    background: black;
+    background: rgb(83, 83, 83);
     padding:10px 20px;
 }
