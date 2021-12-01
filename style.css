@@ -1,6 +1,6 @@
 body{
     background:rgb(200, 253, 255);
-    color: rgb(90, 73, 231);
+    color: white;
     font-family: Helvetica Neue, Helvetica, Arial;
     padding: 0;
     margin: 0;   
@@ -46,7 +46,23 @@ ul{
 li{
     display: inline-block;
     margin-right: 20px;
-    margin-top: 40px;
+    margin-top: 65px;
+}
+.feature-box:link{
+    color: black;
+}
+.feature-box{
+    background-color: white;
+    width: 800px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+header .feature-box a:hover {
+    text-decoration: none;
+    color: rgba(155, 155, 155, 0.247);
 }
 
 footer{
