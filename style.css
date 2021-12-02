@@ -5,6 +5,9 @@ body{
     padding: 0;
     margin: 0;   
 }
+
+/* Header */
+
 header {
     background: rgb(239, 239, 239);
     background-image: url("images/Hero.jpg");
@@ -14,6 +17,7 @@ header {
     padding:10px 20px;
     text-align: center;
 }
+
 header .logo a{
     background-image:url("images/logo1.png");
     background-size: 300px;
@@ -25,6 +29,8 @@ header .logo a{
     top: -55px;
     text-indent: -99999px;  
 }
+
+
 section{
     background: white;
     color: grey;
@@ -32,25 +38,38 @@ section{
     display:flex;
     flex-direction: row;
 }
+
 div{
     background: rgb(90, 73, 231);
     margin:auto;
     width:120px;
     color:honeydew;
 }
-ul{
+
+nav ul{
     margin:0;
     padding: 0%;
     list-style-type: none;
 }
+
 li{
     display: inline-block;
     margin-right: 20px;
     margin-top: 65px;
 }
+
+header .feature-box a:hover {
+    text-decoration: none;
+    color: rgba(155, 155, 155, 0.247);
+}
+
+
+/* Features */
+
 .feature-box:link{
     color: black;
 }
+
 .feature-box{
     background-color: white;
     width: 800px;
@@ -60,12 +79,12 @@ li{
     width: 50%;
 }
 
-header .feature-box a:hover {
-    text-decoration: none;
-    color: rgba(155, 155, 155, 0.247);
-}
+/* Footer */
 
 footer{
     background: rgb(239, 239, 239);
     padding:10px 20px;
 }
+
+/* Responsive */
+
