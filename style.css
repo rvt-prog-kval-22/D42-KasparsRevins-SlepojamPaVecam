@@ -20,7 +20,8 @@ nav{
     font-size: 22px;
 }
 .pagename{
-    color: black;
+    color: white;
+    font-size: 24px;
 
 }
 /* Feature-Box */
@@ -32,12 +33,13 @@ nav{
 
 .feature-box li{
     list-style: none;
-    color: white;
 }
 
 .feature-box a{
-    text-decoration: none;
     color:white;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
     font-size: 20px;
 }
 
