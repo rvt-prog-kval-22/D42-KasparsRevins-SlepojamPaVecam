@@ -20,7 +20,7 @@ nav{
 }
 .pagename{
     color: white;
-    font-size: 24px;
+    font-size: 20px;
 
 }
 /* Feature-Box */
@@ -43,6 +43,75 @@ nav{
 }
 
 
+/* Footer */
+
+.footer{
+    background-color: rgb(122, 122, 122);
+}
+
+/* Body */
+
+.responsive{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+
+.psolid {   
+    border: 3px solid grey;
+}
+.psoliddos{
+    border: 3px solid grey;
+    border-top: 0px;
+    font-size: 18px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.wrapper{
+    position: relative;
+    margin: 0 auto;
+  }
+  .image{
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      vertical-align: top;
+  }
+  .hotspots{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      z-index: 100;
+  }
+  .coords{
+      position: absolute;
+  }
+  .tooltiptext{
+    visibility: hidden;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  
+  .tooltip{
+      background: #4CAF50;
+      width: 24px;
+      height: 24px;
+      color: black;
+      text-decoration: none;
+      position: absolute;
+      left: auto;
+      top: auto;
+      border-radius: 100%;
+  }
 /* Burger */
 
 .burger{
@@ -60,14 +129,8 @@ nav{
 
 /* Responsive/Mobile */
 
+
 @media screen and (max-width:1024px){
-    .feature-box{
-        width: 60%;
-    }
-}
-
-
-@media screen and (max-width:768px){
     body{
         overflow-x: hidden;
     }
