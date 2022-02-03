@@ -42,29 +42,7 @@ nav{
     font-size: 20px;
 }
 
-
-/* Footer */
-
-.footer{
-    background-color: rgb(122, 122, 122);
-}
-
 /* Body */
-
-.mainimage{
-    width: 200px;
-    height:100px;
-}
-
-.flexbox-item{
-    position: relative;
-    top: 200px;
-    left: 25%;
-    width: 50%;
-    height: 110px;
-    border:3px solid #003B73;
-    margin: 20px;
-}
 
 .h1{
     top: 20%;
@@ -91,6 +69,106 @@ nav{
 .text-center{
     text-align: center;
 }
+
+/* Card */
+
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1rem;
+    align-items: flex-start;
+    margin: 2% 5% 5% 5%;
+}
+
+.card{
+    --padding: 1rem;
+    background: white;
+    border: 1px solid #777;
+    border-radius: .25rem;
+    overflow: hidden;
+}
+
+.card.card-shadow{
+    border:none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+}
+.card-body{
+    font-size: .9rem;
+    padding: 0 var(--padding);
+}
+
+.card-header{
+    font-size: 1.5rem;
+    padding: var(--padding);
+    padding-bottom: 0;
+    margin-bottom: .5rem;
+}
+
+.card-header.card-image{
+    padding: 0;
+    overflow: hidden;
+}
+
+.card:hover > .card-header.card-image > img{
+    transform: scale(1.025);
+}
+
+.card-header.card-image > img{
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    aspect-ratio: 16 / 9;   
+    object-fit: cover;
+    object-position: center;
+    transition: 200ms transform ease-in-out;
+}
+
+.card-footer{
+    margin-top: 1rem;
+    padding: var(--padding);
+    padding-top: 0;
+}
+
+.btn{
+    background: #0074B7;
+    border:none;
+    color: white;
+    padding: .5em .75em;
+    border-radius: .25em;
+    cursor: pointer;
+}
+
+.btn:hover, .btn:focus{
+    background: #60A3D9;
+}
+
+.btn.btn-outline{
+    background: none;
+    border: 1px solid #60A3D9;
+    color: #60A3D9;
+}
+
+.btn.btn-outline:hover, .btn.btn-outline:focus{
+    background: #BFD7ED;
+}
+
+.btn + .btn{
+    margin-left: .25rem;
+}
+
+/* Footer */
+
+footer{
+    position: relative;
+    width:100%;
+    height:60px;
+    text-align: center;
+    background: #0074B7;
+    color: white;
+}
+
+
+/* Tooltip */
 
 .wrapper{
     position: relative;
@@ -152,7 +230,7 @@ nav{
     transition: all 0.3s ease;
 }
 
-/* Responsive/Mobile */
+/* NavBar Responsive/Mobile */
 
 
 @media screen and (max-width:1024px){
