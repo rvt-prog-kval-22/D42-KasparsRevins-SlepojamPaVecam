@@ -257,13 +257,16 @@ footer{
     .burger{
         display: block;
     }
-    footer{
-        position: relative;
-    }
 }
 
 .nav-active{
     transform: translateX(0%);
+}
+
+@media screen and (max-width:1832px){
+    footer{
+        position: relative;
+    }
 }
 
 @keyframes navFeatureFade{
