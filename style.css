@@ -70,6 +70,23 @@ nav{
     text-align: center;
 }
 
+/* Links */
+
+.btnviens:visited {
+    color: white;
+  }
+.btndivi:visited{
+    color: #60A3D9;
+}
+a {
+    text-decoration: none;
+  }
+  .btnviens:link {
+    color: white;
+  }
+.btndivi:link{
+    color: #60A3D9;
+}
 /* Card */
 
 .card-grid{
@@ -243,7 +260,7 @@ footer{
         right: 0px;
         height: 92vh;
         top: 8vh;
-        background-color: #BFD7ED;
+        background-color: #0074B7;
         display: flex;
         flex-direction:column;  
         align-items: center;
