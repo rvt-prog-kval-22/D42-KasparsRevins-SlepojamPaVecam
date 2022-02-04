@@ -189,7 +189,7 @@ footer{
 }
 
 .home-footer{
-    position: absolute;
+    position: relative;
 }
 
 .footer-text{
@@ -289,12 +289,6 @@ footer{
 
 .nav-active{
     transform: translateX(0%);
-}
-
-@media screen and (max-width:1832px){
-    .home-footer{
-        position: relative;
-    }
 }
 
 @media screen and (max-width:1311px){
