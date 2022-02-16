@@ -21,7 +21,7 @@ nav{
 .pagename{
     color: white;
     font-size: 20px;
-
+    padding: 10px;
 }
 /* Feature-Box */
 .feature-box{
@@ -40,6 +40,34 @@ nav{
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 20px;
+}
+
+/* Responsive map */
+
+.map-responsive{
+
+    overflow:hidden;
+
+    padding-bottom:44.25%;
+
+    position:relative;
+
+    height:0;
+
+}
+
+.map-responsive iframe{
+
+    left:10%;
+
+    top:5px;
+
+    height:80%;
+
+    width:80%;
+
+    position:absolute;
+
 }
 
 /* Body */
@@ -68,6 +96,20 @@ nav{
 
 .text-center{
     text-align: center;
+}
+
+.kalna-teksts{
+    padding: 50px 5px 5px 10%;
+}
+
+.kalna-teksts-lielais{
+    display: block;
+    font-size: 1em;
+    margin-block-start: 2.67em;
+    margin-block-end: 0.1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 /* Links */
@@ -230,6 +272,7 @@ footer{
     width: 140px;
     text-align: center;
     border: 3px solid   #003B73;
+    border-radius: .25em;
   }
   
   .tooltip{
