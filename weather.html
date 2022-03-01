@@ -30,6 +30,65 @@
             </div>
     </nav>
     </header>
+<div class="weather-app">
+    <div class="container">
+        <h3 class="brand"></h3>
+        <div>
+            <h1 class="temp">16&#176;</h1>
+            <div class="city-time">
+                <h1 class="name">Rīga</h1>
+                <small>
+                    <span class="time">06:09</span>
+                    <span class="date">Monday Feb 21</span>
+                </small>
+            </div>
+            <div class="weather">
+                <img 
+                src="./weather/day/113.png"
+                class="icon"
+                alt="icon"
+                width="50"
+                height="50"
+                />
+                <span class="condition">Cloudy</span>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <form id="locationinput">
+            <input
+            type="text"
+            class="search"
+            placeholder="Meklēt atrašanās vietu"
+            />
+            <button type="submit" class="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <ul class="cities">
+            <li class="city">Jelgava</li>
+            <li class="city">Daugavpils</li>
+            <li class="city">Liepāja</li>
+            <li class="city">Sigulda</li>
+        </ul>
+        <ul class="details">
+            <h4>Laikapstākļu detaļas</h4>
+            <li>
+                <span>Mākoņains</span>
+                <span class="cloud"> 89%</span>
+            </li>
+            <li>
+                <span>Mitrums</span>
+                <span class="humidity">64%</span>
+            </li>
+            <li>
+                <span>Vējš</span>
+                <span class="humidity">8km/h</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
 
     <script src="app.js"></script>
 </body>
