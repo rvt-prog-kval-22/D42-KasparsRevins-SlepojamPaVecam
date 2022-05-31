@@ -1,0 +1,455 @@
+﻿/* Everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica Neue, Helvetica, Arial;
+}
+/* Header */
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #0074B7;
+}
+
+.logo {
+    color: white;
+    font-size: 36px;
+}
+
+.pagename {
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
+/* Feature-Box */
+.feature-box {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+}
+
+    .feature-box li {
+        list-style: none;
+    }
+
+    .feature-box a {
+        color: white;
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+/* Responsive map */
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 44.25%;
+    position: relative;
+    height: 0;
+}
+
+    .map-responsive iframe {
+        left: 10%;
+        top: 5px;
+        height: 80%;
+        width: 80%;
+        position: absolute;
+    }
+
+/* Body */
+
+.h1 {
+    top: 20%;
+    text-align: center;
+}
+
+.responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+
+.psolid {
+    border: 3px solid grey;
+}
+
+.psoliddos {
+    border: 3px solid grey;
+    border-top: 0px;
+    font-size: 18px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.kalna-teksts {
+    padding: 50px 5px 5px 10%;
+}
+
+.kalna-teksts-lielais {
+    display: block;
+    font-size: 1em;
+    margin-block-start: 2.67em;
+    margin-block-end: 0.1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+/* Links */
+
+.btnviens:visited {
+    color: white;
+}
+
+.btndivi:visited {
+    color: #60A3D9;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btnviens:link {
+    color: white;
+}
+
+.btndivi:link {
+    color: #60A3D9;
+}
+/* Card */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1rem;
+    align-items: flex-start;
+    margin: 2% 5% 5% 5%;
+}
+
+.card {
+    --padding: 1rem;
+    background: white;
+    border: 1px solid #777;
+    border-radius: .25rem;
+    overflow: hidden;
+}
+
+    .card.card-shadow {
+        border: none;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+    }
+
+.card-body {
+    font-size: .9rem;
+    padding: 0 var(--padding);
+}
+
+.card-header {
+    font-size: 1.5rem;
+    padding: var(--padding);
+    padding-bottom: 0;
+    margin-bottom: .5rem;
+}
+
+    .card-header.card-image {
+        padding: 0;
+        overflow: hidden;
+    }
+
+.card:hover > .card-header.card-image > img {
+    transform: scale(1.025);
+}
+
+.card-header.card-image > img {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    transition: 200ms transform ease-in-out;
+}
+
+.card-footer {
+    margin-top: 1rem;
+    padding: var(--padding);
+    padding-top: 0;
+}
+
+.btn {
+    background: #0074B7;
+    border: none;
+    color: white;
+    padding: .5em .75em;
+    border-radius: .25em;
+    cursor: pointer;
+}
+
+    .btn:hover, .btn:focus {
+        background: #60A3D9;
+    }
+
+    .btn.btn-outline {
+        background: none;
+        border: 1px solid #60A3D9;
+        color: #60A3D9;
+    }
+
+        .btn.btn-outline:hover, .btn.btn-outline:focus {
+            background: #BFD7ED;
+        }
+
+    .btn + .btn {
+        margin-left: .25rem;
+    }
+
+/* Footer */
+
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #0074B7;
+    color: white;
+    position: absolute;
+}
+
+.locations-footer {
+    position: relative;
+}
+
+.home-footer {
+    position: relative;
+}
+
+.footer-text {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Tooltip */
+
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.hotspots {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    z-index: 100;
+}
+
+.coords {
+    position: absolute;
+}
+
+.tooltiptext {
+    visibility: hidden;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    background-color: rgb(255, 255, 255);
+    width: 140px;
+    text-align: center;
+    border: 3px solid #003B73;
+    border-radius: .25em;
+}
+
+.tooltip {
+    background: #0074B7;
+    border: 3px solid #003B73;
+    width: 25px;
+    height: 25px;
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    left: auto;
+    top: auto;
+    border-radius: 100%;
+}
+/* Burger */
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+    .burger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+/* NavBar Responsive/Mobile */
+
+
+@media screen and (max-width:1024px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .feature-box {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #0074B7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+        transform: translateX(100%);
+        transition: transform 0.45s ease-in;
+        z-index: 10;
+        opacity: 1;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@media screen and (max-width:1311px) {
+    .locations-footer {
+        position: absolute;
+    }
+}
+
+@keyframes navFeatureFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+/* Laikapstākļi */
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2em 3em 4em 3em;
+}
+
+    .container > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.city-time,
+.temp,
+.weather {
+    margin: 0 1em;
+}
+
+    .city-time h1 {
+        margin: 0;
+        margin-bottom: 0.2em;
+        font-size: 3em;
+    }
+
+.temp {
+    font-size: 7em;
+    margin: 0;
+}
+
+.weather img {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.panel {
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    top: 40%;
+    right: 2%;
+    background: #0074B7;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);
+    padding: 3em 2em;
+}
+
+    .panel form {
+        margin-bottom: 3em;
+    }
+
+.submit {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    padding: 1.5em;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: #003B73;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: 0.4s;
+}
+
+    .submit:hover {
+        background: #fff !important;
+        color: #000;
+    }
+
+.search {
+    background: none;
+    border: none;
+    border-bottom: 1px white solid;
+    padding: 0 1em 0.5em 0;
+    width: 80%;
+    color: #fff;
+    font-size: 1.1em;
+}
