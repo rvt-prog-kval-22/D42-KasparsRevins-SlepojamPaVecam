@@ -12,8 +12,8 @@ using SPVWeb.Data;
 namespace SPVWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220526075802_AddingIdentity")]
-    partial class AddingIdentity
+    [Migration("20220531100625_comment")]
+    partial class comment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -222,7 +222,57 @@ namespace SPVWeb.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SPVWeb.Models.Category", b =>
+            modelBuilder.Entity("SPVWeb.Models.Comments.MainComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MountainId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MountainId");
+
+                    b.ToTable("Maincomments");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Comments.SubComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MainCommentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainCommentId");
+
+                    b.ToTable("Subcomments");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Mountain", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,16 +283,52 @@ namespace SPVWeb.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DisplayOrder")
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TrackCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Mountains");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Rentable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MountainId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.HasIndex("MountainId");
+
+                    b.ToTable("Rentables");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -294,6 +380,41 @@ namespace SPVWeb.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Comments.MainComment", b =>
+                {
+                    b.HasOne("SPVWeb.Models.Mountain", null)
+                        .WithMany("Maincomments")
+                        .HasForeignKey("MountainId");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Comments.SubComment", b =>
+                {
+                    b.HasOne("SPVWeb.Models.Comments.MainComment", null)
+                        .WithMany("SubComments")
+                        .HasForeignKey("MainCommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Rentable", b =>
+                {
+                    b.HasOne("SPVWeb.Models.Mountain", null)
+                        .WithMany("Rentables")
+                        .HasForeignKey("MountainId");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Comments.MainComment", b =>
+                {
+                    b.Navigation("SubComments");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.Mountain", b =>
+                {
+                    b.Navigation("Maincomments");
+
+                    b.Navigation("Rentables");
                 });
 #pragma warning restore 612, 618
         }

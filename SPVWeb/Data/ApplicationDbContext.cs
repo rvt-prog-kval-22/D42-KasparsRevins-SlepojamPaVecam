@@ -11,6 +11,5 @@ namespace SPVWeb.Data
         }
 
         public DbSet<Mountain> Mountains { get; set; }
-        public DbSet<Rentable> Rentables { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SPVWeb.Data;
 
@@ -11,9 +12,10 @@ using SPVWeb.Data;
 namespace SPVWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220603081021_inital")]
+    partial class inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,9 +237,18 @@ namespace SPVWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("HelmetRent")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SkiLiftRent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SkiiRent")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("TrackCount")
                         .HasColumnType("int");
@@ -245,38 +256,6 @@ namespace SPVWeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Mountains");
-                });
-
-            modelBuilder.Entity("SPVWeb.Models.Rentable", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MountainId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MountainId");
-
-                    b.ToTable("Rentables");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -328,18 +307,6 @@ namespace SPVWeb.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SPVWeb.Models.Rentable", b =>
-                {
-                    b.HasOne("SPVWeb.Models.Mountain", null)
-                        .WithMany("Rentables")
-                        .HasForeignKey("MountainId");
-                });
-
-            modelBuilder.Entity("SPVWeb.Models.Mountain", b =>
-                {
-                    b.Navigation("Rentables");
                 });
 #pragma warning restore 612, 618
         }

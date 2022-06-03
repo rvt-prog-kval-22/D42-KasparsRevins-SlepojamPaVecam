@@ -16,6 +16,26 @@
             <input asp-for="TrackCount" class="form-control"/>
             <span asp-validation-for="TrackCount" class="text-danger"></span>
         </div>
+        <div class="mb-3">
+            <label asp-for="SkiLiftRent"></label>
+            <input asp-for="SkiLiftRent" class="form-control"/>
+            <span asp-validation-for="SkiLiftRent" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="HelmetRent"></label>
+            <input asp-for="HelmetRent" class="form-control"/>
+            <span asp-validation-for="HelmetRent" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SkiiRent"></label>
+            <input asp-for="SkiiRent" class="form-control"/>
+            <span asp-validation-for="SkiiRent" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control"/>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
         <a asp-controller="Mountain" asp-action="Index" class="btn btn-secondary" style="width:150px">
             Back to List
@@ -23,8 +43,8 @@
     </div>
 </form>
 
-@section Scripts{
+@*@section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-}
+}*@

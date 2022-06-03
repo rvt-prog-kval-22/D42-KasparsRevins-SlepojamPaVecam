@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SPVWeb.Data;
 using SPVWeb.Models;
 
 namespace SPVWeb.Controllers
 {
+    [Authorize]
     public class MountainController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -12,7 +14,7 @@ namespace SPVWeb.Controllers
         {
             _db = db;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             IEnumerable<Mountain> objectMountainList = _db.Mountains.ToList();
@@ -70,7 +72,7 @@ namespace SPVWeb.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
-     
+
         }
         public IActionResult Delete(int? id)
         {
@@ -102,6 +104,7 @@ namespace SPVWeb.Controllers
             TempData["success"] = "Mountain deleted successfully";
             return RedirectToAction("Index");
         }
+        [AllowAnonymous]
         public IActionResult View(int? id)
         {
             if (id is null or 0)
