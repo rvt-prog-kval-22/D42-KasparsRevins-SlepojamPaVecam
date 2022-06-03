@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SPVWeb.Models;
 using System.Diagnostics;
 
 namespace SPVWeb.Controllers
 {
-    public class HomeController : Controller
+    [AllowAnonymous]
+    public class HomeController : Controller 
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -12,12 +14,10 @@ namespace SPVWeb.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
