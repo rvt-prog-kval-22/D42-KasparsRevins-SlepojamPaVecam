@@ -11,12 +11,12 @@ namespace SPVWeb.Models
         [Range(1, 30)]
         public int TrackCount { get; set; }
         [Range (1,100)]
-        [RegularExpression(@"^\d+\,\d{0,2}$")]
+        [RegularExpression(@"^\d+\,\d{0,2}$", ErrorMessage = "Cena ievadīta nepareizi")]
         public decimal SkiLiftRent { get; set; }
         [Range(1, 100)]
-        [RegularExpression(@"^\d+\,\d{0,2}$")]
+        [RegularExpression(@"^\d+\,\d{0,2}$", ErrorMessage = "Cena ievadīta nepareizi")]
         public decimal HelmetRent { get; set; }
-        [RegularExpression(@"^\d+\,\d{0,2}$")]
+        [RegularExpression(@"^\d+\,\d{0,2}$", ErrorMessage = "Cena ievadīta nepareizi")]
         public decimal SkiiRent { get; set; } 
 
 

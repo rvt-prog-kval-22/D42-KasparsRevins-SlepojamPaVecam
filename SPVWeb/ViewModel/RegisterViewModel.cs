@@ -16,7 +16,7 @@ namespace SPVWeb.ViewModel
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password",
-            ErrorMessage = "Password and confirmation password do not match.")]
+            ErrorMessage = "Paroles nesakrīt.")]
         public string ConfirmPassword { get; set; }
     }
 }

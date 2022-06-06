@@ -77,7 +77,7 @@ namespace SPVWeb.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt");
+                ModelState.AddModelError(string.Empty, "Neizdevies pieslēgšanās mēģīnājums");
             }
 
             return View(model);

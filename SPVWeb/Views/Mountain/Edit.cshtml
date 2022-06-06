@@ -3,48 +3,42 @@
 <form method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Edit Category</h2>
+            <h2 class="text-primary">Rediģēt kalnu</h2>
             <hr />
         </div>
         <div class="mb-3">
-            <label asp-for="Name"></label>
+            <label asp-for="Name">Nosaukums</label>
             <input asp-for="Name" class="form-control"/>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="TrackCount"></label>
+            <label asp-for="TrackCount">Trašu Skaits</label>
             <input asp-for="TrackCount" class="form-control"/>
             <span asp-validation-for="TrackCount" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="SkiLiftRent"></label>
+            <label asp-for="SkiLiftRent">Pacēlāja īre</label>
             <input asp-for="SkiLiftRent" class="form-control"/>
             <span asp-validation-for="SkiLiftRent" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="HelmetRent"></label>
+            <label asp-for="HelmetRent">Ķiveres īre</label>
             <input asp-for="HelmetRent" class="form-control"/>
             <span asp-validation-for="HelmetRent" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="SkiiRent"></label>
+            <label asp-for="SkiiRent">Slēpju īre</label>
             <input asp-for="SkiiRent" class="form-control"/>
             <span asp-validation-for="SkiiRent" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Description"></label>
+            <label asp-for="Description">Apraksts</label>
             <input asp-for="Description" class="form-control"/>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <button type="submit" class="btn btn-primary" style="width:150px">Atjaunot</button>
         <a asp-controller="Mountain" asp-action="Index" class="btn btn-secondary" style="width:150px">
-            Back to List
+            Atpakaļ
         </a>
     </div>
 </form>
-
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}

@@ -12,7 +12,7 @@ namespace SPVWeb.ViewModel
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me")]
+        [Display(Name = "Atcerēties mani")]
         public bool RememberMe { get; set; }
     }
 }

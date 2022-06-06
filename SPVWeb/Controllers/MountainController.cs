@@ -40,13 +40,13 @@ namespace SPVWeb.Controllers
         {
             if (obj.Name == obj.TrackCount.ToString())
             {
-                ModelState.AddModelError("name", "The display order cannot exactly match the Name.");
+                ModelState.AddModelError("name", "Trašu skaits nevar būt vienāds ar kalna nosaukumu");
             }
             if (ModelState.IsValid)
             {
                 _db.Mountains.Add(obj);
                 _db.SaveChanges();
-                TempData["success"] = "Mountain created successfully";
+                TempData["success"] = "Kalns izveidots veiksmīgi";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -72,13 +72,13 @@ namespace SPVWeb.Controllers
         {
             if (obj.Name == obj.TrackCount.ToString())
             {
-                ModelState.AddModelError("name", "The display order cannot exactly match the Name.");
+                ModelState.AddModelError("name", "Trašu skaits nevar būt vienāds ar kalna nosaukumu");
             }
             if (ModelState.IsValid)
             {
                 _db.Mountains.Update(obj);
                 _db.SaveChanges();
-                TempData["success"] = "Mountain updated successfully";
+                TempData["success"] = "Kalns rediģēts veiksmīgi";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -111,7 +111,7 @@ namespace SPVWeb.Controllers
 
             _db.Mountains.Remove(obj);
             _db.SaveChanges();
-            TempData["success"] = "Mountain deleted successfully";
+            TempData["success"] = "Kalns izdzēsts";
             return RedirectToAction("Index");
         }
         [AllowAnonymous]
