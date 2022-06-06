@@ -7,10 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Comments\**" />
     <Compile Remove="SPV\**" />
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="Models\Comments\**" />
     <Content Remove="SPV\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="Models\Comments\**" />
     <EmbeddedResource Remove="SPV\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="Models\Comments\**" />
     <None Remove="SPV\**" />
+    <None Remove="wwwroot\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Rentable.cs" />
+    <Compile Remove="ViewModel\CommentViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +41,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>
