@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SPVWeb.Data;
 using SPVWeb.Models;
 
@@ -19,6 +20,15 @@ namespace SPVWeb.Controllers
         {
             IEnumerable<Mountain> objectMountainList = _db.Mountains.ToList();
             return View(objectMountainList);
+        }
+
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        {
+            return View("Index", await _db.Mountains.Where(j => j.Name.Contains(SearchPhrase)).ToListAsync());
         }
         public IActionResult Create()
         {
