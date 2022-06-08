@@ -21,7 +21,7 @@ namespace SPVWeb.Controllers
             IEnumerable<Mountain> objectMountainList = _db.Mountains.ToList();
             return View(objectMountainList);
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> ShowSearchForm()
         {
             return View();
