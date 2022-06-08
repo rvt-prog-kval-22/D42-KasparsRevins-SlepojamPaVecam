@@ -5,3 +5,11 @@ Problēma – cilvēki, kas nodarbojas ar slēpošanu, profesionāli vai kā ama
 Kāpēc izvēlējos šo tēmu, man pašam patīk slēpot un esmu apmeklējis populārākās slēpošanas vietas, trases un iestādes. Esmu saskāries ar to, ka informāciju ir grūti iegūt un mājaslapas dažreiz nav pieejamas.
 
 Kvalifikācijas darba mērķis ir izveidot mājaslapu kurā ir apkopota informācija par šim slēpošanas vietām, trasēm un iestādēm, lai cilvēki, varētu viegli atrast informāciju un izspriest vai vēlās doties piemēram vai uz “Milzkalnu” vai uz “Riekstukalnu”.
+
+#Pašlaik plānotās izmantotās tehnoloģijas:
+HTML
+CSS
+JS
+C#
+ASP.NET
+MY SQL
