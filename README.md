@@ -3,7 +3,7 @@ Problēma – cilvēki, kas nodarbojas ar slēpošanu, profesionāli vai kā ama
 
 Kvalifikācijas darba mērķis ir izveidot mājaslapu kurā ir apkopota informācija par šim slēpošanas vietām, trasēm un iestādēm, lai cilvēki, varētu viegli atrast informāciju un izspriest vai vēlās doties piemēram vai uz “Milzkalnu” vai uz “Riekstukalnu”.
 
-#Pašlaik plānotās izmantotās tehnoloģijas:
+#Pašlaik izmantotās tehnoloģijas:
 HTML
 CSS
 JS
