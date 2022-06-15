@@ -12,8 +12,8 @@ using SPVWeb.Data;
 namespace SPVWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220531100625_comment")]
-    partial class comment
+    [Migration("20220615182657_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,10 @@ namespace SPVWeb.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -139,6 +143,8 @@ namespace SPVWeb.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -222,56 +228,6 @@ namespace SPVWeb.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SPVWeb.Models.Comments.MainComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MountainId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MountainId");
-
-                    b.ToTable("Maincomments");
-                });
-
-            modelBuilder.Entity("SPVWeb.Models.Comments.SubComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MainCommentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MainCommentId");
-
-                    b.ToTable("Subcomments");
-                });
-
             modelBuilder.Entity("SPVWeb.Models.Mountain", b =>
                 {
                     b.Property<int>("Id")
@@ -287,9 +243,18 @@ namespace SPVWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("HelmetRent")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SkiLiftRent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SkiiRent")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("TrackCount")
                         .HasColumnType("int");
@@ -299,7 +264,7 @@ namespace SPVWeb.Migrations
                     b.ToTable("Mountains");
                 });
 
-            modelBuilder.Entity("SPVWeb.Models.Rentable", b =>
+            modelBuilder.Entity("SPVWeb.Models.Reservation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -307,28 +272,39 @@ namespace SPVWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Duration")
+                    b.Property<int>("Brauceji")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MountainId")
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MountainId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("ReservationDay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApplicationUserId");
+
                     b.HasIndex("MountainId");
 
-                    b.ToTable("Rentables");
+                    b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("SPVWeb.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -382,39 +358,27 @@ namespace SPVWeb.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPVWeb.Models.Comments.MainComment", b =>
+            modelBuilder.Entity("SPVWeb.Models.Reservation", b =>
                 {
-                    b.HasOne("SPVWeb.Models.Mountain", null)
-                        .WithMany("Maincomments")
-                        .HasForeignKey("MountainId");
-                });
+                    b.HasOne("SPVWeb.Models.ApplicationUser", null)
+                        .WithMany("Reservations")
+                        .HasForeignKey("ApplicationUserId");
 
-            modelBuilder.Entity("SPVWeb.Models.Comments.SubComment", b =>
-                {
-                    b.HasOne("SPVWeb.Models.Comments.MainComment", null)
-                        .WithMany("SubComments")
-                        .HasForeignKey("MainCommentId")
+                    b.HasOne("SPVWeb.Models.Mountain", null)
+                        .WithMany("Reservations")
+                        .HasForeignKey("MountainId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPVWeb.Models.Rentable", b =>
-                {
-                    b.HasOne("SPVWeb.Models.Mountain", null)
-                        .WithMany("Rentables")
-                        .HasForeignKey("MountainId");
-                });
-
-            modelBuilder.Entity("SPVWeb.Models.Comments.MainComment", b =>
-                {
-                    b.Navigation("SubComments");
-                });
-
             modelBuilder.Entity("SPVWeb.Models.Mountain", b =>
                 {
-                    b.Navigation("Maincomments");
+                    b.Navigation("Reservations");
+                });
 
-                    b.Navigation("Rentables");
+            modelBuilder.Entity("SPVWeb.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

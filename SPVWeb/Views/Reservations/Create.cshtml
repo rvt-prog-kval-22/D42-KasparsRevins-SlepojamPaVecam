@@ -1,0 +1,26 @@
+﻿@model Reservation
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Pievienot rezervāciju</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Brauceji">Braucēju skaits</label>
+            <input asp-for="Brauceji" class="form-control"/>
+            <span asp-validation-for="Brauceji" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ReservationDay">Rezervācijas diena</label>
+            <input asp-for="ReservationDay" class="form-control"/>
+            <span asp-validation-for="ReservationDay" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="MountainId" value="@Model.MountainId"/>
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Izveidot</button>
+        <a asp-controller="Mountain" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Atpakaļ
+        </a>
+    </div>
+</form>

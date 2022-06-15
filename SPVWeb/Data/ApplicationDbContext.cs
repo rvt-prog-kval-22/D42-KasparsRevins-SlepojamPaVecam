@@ -11,5 +11,7 @@ namespace SPVWeb.Data
         }
 
         public DbSet<Mountain> Mountains { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }    
     }
 }

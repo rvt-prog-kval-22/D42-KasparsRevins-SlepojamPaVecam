@@ -34,4 +34,8 @@
     <a asp-controller="Mountain" asp-action="Index" class="btn btn-secondary" style="width:150px">
         Atpakaļ
     </a>
+
+    <a asp-controller="Reservations" asp-action="Create" asp-route-mountainid="@Model.Id" class="btn btn-secondary" style="width:150px">
+        Rezervēt
+    </a>
 </div>

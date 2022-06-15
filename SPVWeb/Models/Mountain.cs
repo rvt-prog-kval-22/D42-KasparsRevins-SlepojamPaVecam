@@ -23,5 +23,7 @@ namespace SPVWeb.Models
         public string Description { get; set; } = "";
 
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+
+        public List<Reservation> Reservations { get; set; } = new();
     }
 }

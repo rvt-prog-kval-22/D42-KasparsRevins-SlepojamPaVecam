@@ -18,7 +18,7 @@ namespace SPVWeb.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            IEnumerable<Mountain> objectMountainList = _db.Mountains.ToList();
+            var objectMountainList = _db.Mountains.ToList();
             return View(objectMountainList);
         }
         [AllowAnonymous]
