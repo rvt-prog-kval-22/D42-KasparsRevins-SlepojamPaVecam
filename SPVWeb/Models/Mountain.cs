@@ -17,9 +17,9 @@ namespace SPVWeb.Models
         [RegularExpression(@"^\d+\,\d{0,2}$", ErrorMessage = "Cena ievadīta nepareizi, lūdzu ievadiet ar komatu starp summu")]
         public decimal HelmetRent { get; set; }
         [RegularExpression(@"^\d+\,\d{0,2}$", ErrorMessage = "Cena ievadīta nepareizi, lūdzu ievadiet ar komatu starp summu")]
-        public decimal SkiiRent { get; set; } 
+        public decimal SkiiRent { get; set; }
 
-        public string UserId    { get; set; }
+        public string UserId { get; set; } = "";
 
         public string Description { get; set; } = "";
 
