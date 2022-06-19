@@ -4,7 +4,7 @@ using SPVWeb.Models;
 
 namespace SPVWeb.Data
 {
-    public class ApplicationDbContext :IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -12,6 +12,6 @@ namespace SPVWeb.Data
 
         public DbSet<Mountain> Mountains { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }    
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

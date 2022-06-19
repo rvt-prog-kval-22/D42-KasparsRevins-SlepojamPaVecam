@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SPVWeb.Migrations
 {
-    public partial class initial : Migration
+    public partial class initi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,25 +47,6 @@ namespace SPVWeb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Mountains",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrackCount = table.Column<int>(type: "int", nullable: false),
-                    SkiLiftRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    HelmetRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SkiiRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Mountains", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,26 +156,49 @@ namespace SPVWeb.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Mountains",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TrackCount = table.Column<int>(type: "int", nullable: false),
+                    SkiLiftRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    HelmetRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SkiiRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mountains", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Mountains_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Brauceji = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Vards = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Uzvards = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MountainId = table.Column<int>(type: "int", nullable: false),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReservationDay = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    NeedHelmetRent = table.Column<bool>(type: "bit", nullable: false),
+                    NeedSkiiRent = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reservations_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Reservations_Mountains_MountainId",
                         column: x => x.MountainId,
@@ -243,8 +247,8 @@ namespace SPVWeb.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_ApplicationUserId",
-                table: "Reservations",
+                name: "IX_Mountains_ApplicationUserId",
+                table: "Mountains",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
@@ -277,10 +281,10 @@ namespace SPVWeb.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Mountains");
 
             migrationBuilder.DropTable(
-                name: "Mountains");
+                name: "AspNetUsers");
         }
     }
 }

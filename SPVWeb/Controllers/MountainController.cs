@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SPVWeb.Data;
@@ -10,10 +11,12 @@ namespace SPVWeb.Controllers
     public class MountainController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public MountainController(ApplicationDbContext db)
+        public MountainController(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
             _db = db;
+            this.userManager = userManager;
         }
         [AllowAnonymous]
         public IActionResult Index()
@@ -36,14 +39,18 @@ namespace SPVWeb.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Mountain obj)
+        public async Task <IActionResult> Create(Mountain obj)
         {
+
+
             if (obj.Name == obj.TrackCount.ToString())
             {
                 ModelState.AddModelError("name", "Trašu skaits nevar būt vienāds ar kalna nosaukumu");
             }
             if (ModelState.IsValid)
             {
+                var user = await userManager.GetUserAsync(User);
+                obj.UserId = user.Id;
                 _db.Mountains.Add(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Kalns izveidots veiksmīgi";

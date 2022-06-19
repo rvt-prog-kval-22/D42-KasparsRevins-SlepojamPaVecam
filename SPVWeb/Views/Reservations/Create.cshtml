@@ -7,16 +7,38 @@
         </div>
 
         <div class="mb-3">
+            <label asp-for="Vards">Vārds</label>
+            <input asp-for="Vards" class="form-control" />
+            <span asp-validation-for="Vards" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Uzvards">Uzvārds</label>
+            <input asp-for="Uzvards" class="form-control" />
+            <span asp-validation-for="Uzvards" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="Brauceji">Braucēju skaits</label>
-            <input asp-for="Brauceji" class="form-control"/>
+            <input asp-for="Brauceji" class="form-control" />
             <span asp-validation-for="Brauceji" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="ReservationDay">Rezervācijas diena</label>
-            <input asp-for="ReservationDay" class="form-control"/>
+            <input asp-for="ReservationDay" class="form-control" id="ReservationDate" />
+            <script>( "#ReservationDay" ).datepicker({
+            minDate: 0
+            });</script>
             <span asp-validation-for="ReservationDay" class="text-danger"></span>
         </div>
-        <input type="hidden" asp-for="MountainId" value="@Model.MountainId"/>
+        <div class="form-check">
+            <label asp-for="NeedHelmetRent">Ķiveres īre</label>
+            <input asp-for="NeedHelmetRent" class="form-check-input" type="checkbox" />
+        </div>
+        <div class="form-check">
+            <label asp-for="NeedSkiiRent">Slēpju/Bobsleja īre</label>
+            <input asp-for="NeedSkiiRent" class="form-check-input" type="checkbox" />
+        </div>
+
+        <input type="hidden" asp-for="MountainId" value="@Model.MountainId" />
 
         <button type="submit" class="btn btn-primary" style="width:150px">Izveidot</button>
         <a asp-controller="Mountain" asp-action="Index" class="btn btn-secondary" style="width:150px">

@@ -12,8 +12,8 @@ using SPVWeb.Data;
 namespace SPVWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220615182657_initial")]
-    partial class initial
+    [Migration("20220619091317_initi")]
+    partial class initi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -236,6 +236,9 @@ namespace SPVWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
@@ -259,7 +262,13 @@ namespace SPVWeb.Migrations
                     b.Property<int>("TrackCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Mountains");
                 });
@@ -272,9 +281,6 @@ namespace SPVWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("Brauceji")
                         .HasColumnType("int");
 
@@ -284,16 +290,24 @@ namespace SPVWeb.Migrations
                     b.Property<int>("MountainId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("NeedHelmetRent")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("NeedSkiiRent")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("ReservationDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("Uzvards")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Vards")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("MountainId");
 
@@ -358,12 +372,15 @@ namespace SPVWeb.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SPVWeb.Models.Reservation", b =>
+            modelBuilder.Entity("SPVWeb.Models.Mountain", b =>
                 {
                     b.HasOne("SPVWeb.Models.ApplicationUser", null)
-                        .WithMany("Reservations")
+                        .WithMany("Mountains")
                         .HasForeignKey("ApplicationUserId");
+                });
 
+            modelBuilder.Entity("SPVWeb.Models.Reservation", b =>
+                {
                     b.HasOne("SPVWeb.Models.Mountain", null)
                         .WithMany("Reservations")
                         .HasForeignKey("MountainId")
@@ -378,7 +395,7 @@ namespace SPVWeb.Migrations
 
             modelBuilder.Entity("SPVWeb.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Reservations");
+                    b.Navigation("Mountains");
                 });
 #pragma warning restore 612, 618
         }
