@@ -12,7 +12,7 @@ using SPVWeb.Data;
 namespace SPVWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220619091317_initi")]
+    [Migration("20220619124432_initi")]
     partial class initi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
